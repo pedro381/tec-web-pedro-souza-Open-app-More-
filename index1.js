@@ -1,4 +1,4 @@
-//INICIALIZANDO EXPRESS
+﻿//INICIALIZANDO EXPRESS
 var express = require('express');
 var app = express();
 //INICIALIZANDO MODULO DE LEITURA DE ARQUIVO
@@ -81,7 +81,7 @@ app.get(//SEU CODIGO AQUI
    });
 })
 
-var server = app.listen(8081, function () {
+var server = app.listen(3000, function () {
 
   var host = server.address().address
   var port = server.address().port
