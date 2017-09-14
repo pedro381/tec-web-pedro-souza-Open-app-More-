@@ -6,13 +6,19 @@ router.get('/:nome', function (req, res, next) {
     fs.readFile("./evolucao.json", 'utf8', function (err, data) {
         users = JSON.parse(data);
 
-        var user = users.filter(function (o) {
-            return (o.Name === req.params.nome);
-        });
-
         var pokemon = [];
-        if (user.length > 0)
-            pokemon = user[0]
+
+        for (var i = 0; i < users.length ; i++) {
+            if (users[i].Name === req.params.nome) {
+                pokemon = users[i];
+
+                if (i > 0)
+                    pokemon.Anterior = users[(i - 1)].Name;
+                if (i < users.length)
+                    pokemon.Proximo = users[(i + 1)].Name;
+            }
+        }
+
 
         res.render('index', { pokemon: pokemon });
     });
