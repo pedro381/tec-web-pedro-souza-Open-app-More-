@@ -1,9 +1,21 @@
 var express = require('express');
 var router = express.Router();
+var fs = require("fs");
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/:nome', function (req, res, next) {
+    fs.readFile("./evolucao.json", 'utf8', function (err, data) {
+        users = JSON.parse(data);
+
+        var user = users.filter(function (o) {
+            return (o.Name === req.params.nome);
+        });
+
+        var pokemon = [];
+        if (user.length > 0)
+            pokemon = user[0]
+
+        res.render('index', { pokemon: pokemon });
+    });
 });
 
 module.exports = router;

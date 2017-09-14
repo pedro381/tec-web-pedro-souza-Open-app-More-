@@ -6,3 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+img {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+.image1{
+    width: 254px;
+    height: 174px;
+    position: absolute;
+    top: 176px;
+    left: 84px;
+    z-index: 1;
+}
